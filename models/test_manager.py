@@ -9,8 +9,6 @@ from torch.utils.data import DataLoader
 from datasets.medical_image_dataset import MedicalImageDataset
 
 
-
-
 class TestManager:
     def __init__(self, image_folder, data_file, label_columns, size, model, device, models_path, n_splits):
         self.image_folder = image_folder

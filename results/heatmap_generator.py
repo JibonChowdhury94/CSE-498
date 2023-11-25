@@ -116,7 +116,6 @@ class HeatmapGenerator:
 
         correct_predictions, incorrect_predictions = self._find_predictions()
 
-        # Setting up style for better visuals
         plt.style.use('seaborn-darkgrid')
 
         fig, axs = plt.subplots(2, 3, figsize=(15, 10))

@@ -58,7 +58,7 @@ class PlotVisualizer:
         probabilities = np.vstack(probabilities).reshape(-1, len(self.label_columns))
 
         plt.figure(figsize=(10, 8))
-        plt.plot([0, 1], [0, 1], 'k--')
+        plt.plot([0, 1], [0, 1], 'k--')  # Draw the diagonal line
 
         # Compute and plot ROC curve for each class
         for i, label in enumerate(self.label_columns):

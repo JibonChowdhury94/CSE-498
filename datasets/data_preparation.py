@@ -15,7 +15,6 @@ class DataPreparation:
             self.df[col].fillna(0, inplace=True)
 
     def initial_split(self, n_splits=5, shuffle=False, random_state=None):
-        
         mskf = MultilabelStratifiedKFold(n_splits=n_splits, shuffle=shuffle, random_state=random_state)
         
         for train_index, test_index in mskf.split(self.df['SOPInstanceUID_with_png'], self.df[self.columns]):
