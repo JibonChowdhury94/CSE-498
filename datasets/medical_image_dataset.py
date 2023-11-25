@@ -21,6 +21,5 @@ class MedicalImageDataset(Dataset):
 
         if self.transform:
             image = self.transform(image=np.array(image))["image"]
-#             image = self.transform(image)
 
         return image, labels

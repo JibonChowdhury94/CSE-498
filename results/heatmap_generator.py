@@ -19,7 +19,6 @@ class HeatmapGenerator:
         self.model_class = model_class
         self.model = self._get_model()
         self.model_name = model_name
-#         self.target_layers = [self.model.model.features[-7]]
         self.target_layers = self._get_target_layers()
         self.size = size
         self.dataset_path = dataset_path
@@ -30,7 +29,7 @@ class HeatmapGenerator:
         
     def _get_model(self):
         model = self.model_class(num_classes=len(self.predictor.label_columns))
-        model_path = os.path.join(self.predictor.models_path, 'fold_1_model.pth') # Or any fold you'd like to visualize
+        model_path = os.path.join(self.predictor.models_path, 'fold_1_model.pth')
         model.load_state_dict(torch.load(model_path))
         
         return model
@@ -42,8 +41,7 @@ class HeatmapGenerator:
             'EfficientNetB0': [self.model.model.features[-2]],
         }
 
-        # Return the target layers for the specific model, or a default layer
-        return target_layer_mapping.get(self.model_name)  # Default layer
+        return target_layer_mapping.get(self.model_name)
         
     
     def _get_prediction(self, input_tensor):

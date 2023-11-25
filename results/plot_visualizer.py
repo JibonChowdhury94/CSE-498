@@ -13,7 +13,7 @@ class PlotVisualizer:
         self.roc_curve_plot_name = "roc_curve.png"
         self.precision_recall_curve_plot_name = "precision_recall_curve.png"
         
-        sns.set_style("whitegrid")  # Use Seaborn's whitegrid style
+        sns.set_style("whitegrid")
         self.color_palette = sns.color_palette("husl", len(self.label_columns))
 
     def plot_multilabel_confusion_matrix(self, true_labels, predictions):
@@ -36,7 +36,6 @@ class PlotVisualizer:
             axes.set_xlabel('Predicted label')
             axes.set_title("Class: " + class_label)
 
-        # Determine grid size for the subplots
         n_classes = len(self.label_columns)
         ncols = 2
         nrows = n_classes // ncols + (n_classes % ncols)
@@ -58,9 +57,8 @@ class PlotVisualizer:
         true_labels = np.vstack(true_labels).reshape(-1, len(self.label_columns))
         probabilities = np.vstack(probabilities).reshape(-1, len(self.label_columns))
 
-        # Setting up the figure and axis
         plt.figure(figsize=(10, 8))
-        plt.plot([0, 1], [0, 1], 'k--')  # Draw the diagonal line
+        plt.plot([0, 1], [0, 1], 'k--')
 
         # Compute and plot ROC curve for each class
         for i, label in enumerate(self.label_columns):
@@ -79,7 +77,6 @@ class PlotVisualizer:
         true_labels = np.vstack(true_labels).reshape(-1, len(self.label_columns))
         probabilities = np.vstack(probabilities).reshape(-1, len(self.label_columns))
 
-        # Setting up the figure and axis
         plt.figure(figsize=(10, 8))
 
         # Compute and plot Precision-Recall curve for each class

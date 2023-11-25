@@ -30,7 +30,6 @@ class TransformManager:
 #             A.GridDistortion(num_steps=5, distort_limit=0.3, p=0.5, border_mode=cv2.BORDER_CONSTANT),
 #             A.OpticalDistortion(distort_limit=0.05, shift_limit=0.05, p=0.5, border_mode=cv2.BORDER_CONSTANT),
 
-            # Normalization and conversion to tensor
             A.Resize(height=self.size, width=self.size),
             A.CenterCrop(self.size, self.size),
             A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
@@ -46,7 +45,6 @@ class TransformManager:
         ])
         
 
-        # Initialize datasets and loaders with the transform
         train_dataset = MedicalImageDataset(train_fold_df, self.image_folder, transform=train_transform)
         val_dataset = MedicalImageDataset(val_fold_df, self.image_folder, transform=valid_transform)
         

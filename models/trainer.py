@@ -10,13 +10,12 @@ class Trainer:
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.device = device
-        self.train_loss = []  # Adding lists to store loss and accuracy per epoch
+        self.train_loss = [] 
         self.train_accuracy = []
         self.val_loss = []
         self.val_accuracy = []
 
     def _calculate_accuracy(self, outputs, labels):
-        # Binarize the outputs using a threshold of 0.5
         predicted = (torch.sigmoid(outputs) > 0.5).float()
         correct = (predicted == labels).float().sum()
         return (correct / (labels.size(0) * labels.size(1))).item()

@@ -2,8 +2,6 @@ import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
-# import sys
-# sys.path.append('../')
 
 from datasets.medical_image_dataset import MedicalImageDataset
 from models.trainer import Trainer
@@ -58,7 +56,6 @@ class ModelManager:
         trainer = Trainer(model, criterion, optimizer, train_loader, val_loader, device=self.device)
         trainer.fit(num_epochs)
 
-        # Save the trained model
         self.save_model(trainer.model, fold)
 
         return trainer.train_loss, trainer.train_accuracy, trainer.val_loss, trainer.val_accuracy

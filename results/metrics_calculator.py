@@ -8,7 +8,6 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classifi
 class MetricsCalculator:
     def __init__(self, label_columns):
         self.label_columns = label_columns
-#         self.report_name = "metrics_report.csv"
         
     def compute_metrics(self, predictions, true_labels):
         metrics_per_class = {
